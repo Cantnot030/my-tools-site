@@ -10,14 +10,15 @@
 <h1>CAE 簡易ツール</h1>
 
 <hr>
+    
+<button onclick="calc()">計算</button>
+    
 
 <h2>G = E / (2 * (1 + ν))</h2>
 <h2>E:ヤング率,ν:ポアソン比,G:せん断弾性係数</h2>
 
 <p>E: <input type="number" id="E"></p>
 <p>ν: <input type="number" id="nu" step="0.01"></p>
-
-<button onclick="calcG()">Gを計算</button>
 
 <p>せん断弾性係数 G = <span id="resultG"></span></p>
 
@@ -27,13 +28,13 @@
 
 <p>kN: <input type="number" id="kN"></p>
 
-<button onclick="convert()">tfに変換</button>
+
 
 <p>tf = <span id="resulttf"></span></p>
 
 <script>
 
-function calcG() {
+function calc() {
 
 let E = parseFloat(document.getElementById("E").value);
 let nu = parseFloat(document.getElementById("nu").value);
@@ -41,10 +42,6 @@ let nu = parseFloat(document.getElementById("nu").value);
 let G = E / (2 * (1 + nu));
 
 document.getElementById("resultG").innerText = G;
-
-}
-
-function convert() {
 
 let kN = parseFloat(document.getElementById("kN").value);
 
