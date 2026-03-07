@@ -1,4 +1,4 @@
-// beam.js
+// js/beam.js
 document.getElementById('calcBtn').addEventListener('click', function() {
   const support = document.getElementById('supportType').value;
   const loadType = document.getElementById('loadType').value;
