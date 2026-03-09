@@ -3,34 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <title>CAEツール</title>
+<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
 
 <h1>CAE 簡易ツール</h1>
 
-<hr>
+
+
+<div class="container">
     
-<button onclick="calc()">計算</button>
+  <button onclick="calc()">計算</button>
     
 
-<h2>G = E / (2 * (1 + ν))</h2>
-<h2>E:ヤング率,ν:ポアソン比,G:せん断弾性係数</h2>
+  <!-- 左：入力 -->
+  <div class="input-panel">
 
-<p>E: <input type="number" id="E"></p>
-<p>ν: <input type="number" id="nu" step="0.01"></p>
+    <h2>G = E / (2 * (1 + ν))</h2>
 
-<p>せん断弾性係数 G = <span id="resultG"></span></p>
+　　  <p>E: <input type="number" id="E"></p>
+　　  <p>ν: <input type="number" id="nu" step="0.01"></p>
 
-<hr>
+　　  <p>G = <span id="resultG"></span></p>
 
-<h2>② kN → tf 変換</h2>
+　　<hr>
 
-<p>kN: <input type="number" id="kN"></p>
+    <h2>② kN → tf 変換</h2>
+
+    <p>kN: <input type="number" id="kN"></p>
+
+    <p>tf = <span id="resulttf"></span></p>
+
+  </div>
 
 
+  <!-- 右：説明 -->
+  <div class="info-panel">
 
-<p>tf = <span id="resulttf"></span></p>
+    <h2>パラメータ説明</h2>
+
+    <p><b>E</b> : ヤング係数</p>
+    <p><b>G</b> : せん断弾性係数</p>
+    <p><b>ν</b> : ポアソン比</p>
+
+    <p>
+    説明
+    </p>
+
+  </div>
+
 
 <script>
 
@@ -55,3 +77,4 @@ document.getElementById("resulttf").innerText = tf;
 
 </body>
 </html>
+
