@@ -3,6 +3,10 @@ body{
   margin: 40px;
 }
 
+.top-header{
+  text-align: center;
+}
+
 .container{
   display: flex;
   gap: 40px;
