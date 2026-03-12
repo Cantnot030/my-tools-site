@@ -96,7 +96,7 @@ let tw = parseFloat(document.getElementById("tw").value);
 
 let A = 2*(B*tf) + (H-2*tf)*tw;
 
-let Ix = (2*tf*Math.pow(B,3) + Math.pow(tw,2)*(B - 2*tf))/12;
+let Ix = (2*tf*Math.pow(H,3) + Math.pow(tw,2)*(B - 2*tf))/12;
 
 let Zx = Ix/(H/2);
 
