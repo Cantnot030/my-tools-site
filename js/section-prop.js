@@ -1,3 +1,26 @@
+
+function changeShape(){
+
+let shape = document.getElementById("shape").value;
+
+document.getElementById("rectInputs").style.display = "none";
+document.getElementById("circleInputs").style.display = "none";
+document.getElementById("pipeInputs").style.display = "none";
+
+if(shape==="rect"){
+document.getElementById("rectInputs").style.display = "block";
+}
+
+if(shape==="circle"){
+document.getElementById("circleInputs").style.display = "block";
+}
+
+if(shape==="pipe"){
+document.getElementById("pipeInputs").style.display = "block";
+}
+
+}
+
 function calculate(){
 
 let shape = document.getElementById("shape").value;
