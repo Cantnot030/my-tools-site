@@ -6,6 +6,7 @@ let shape = document.getElementById("shape").value;
 document.getElementById("rectInputs").style.display = "none";
 document.getElementById("circleInputs").style.display = "none";
 document.getElementById("pipeInputs").style.display = "none";
+document.getElementById("hbeamInputs").style.display = "none";
 
 if(shape==="rect"){
 document.getElementById("rectInputs").style.display = "block";
@@ -17,6 +18,10 @@ document.getElementById("circleInputs").style.display = "block";
 
 if(shape==="pipe"){
 document.getElementById("pipeInputs").style.display = "block";
+}
+
+if(shape==="hbeam"){
+document.getElementById("hbeamInputs").style.display = "block";
 }
 
 }
@@ -81,5 +86,34 @@ document.getElementById("result").innerHTML =
 "A="+A+"<br>I="+I+"<br>Z="+Z;
 
 }
+
+function hbeamCalc(){
+
+let B = parseFloat(document.getElementById("B").value);
+let H = parseFloat(document.getElementById("H").value);
+let tf = parseFloat(document.getElementById("tf").value);
+let tw = parseFloat(document.getElementById("tw").value);
+
+let A = 2*(B*tf) + (H-2*tf)*tw;
+
+let Ix =
+2*((B*Math.pow(tf,3))/12 + (B*tf)*Math.pow((H/2 - tf/2),2))
++
+(tw*Math.pow((H-2*tf),3))/12;
+
+let Zx = Ix/(H/2);
+
+document.getElementById("result").innerHTML =
+"A = "+A+"<br>"+
+"Ix = "+Ix+"<br>"+
+"Zx = "+Zx;
+
+}
+
+
+
+
+
+
 
 }
