@@ -32,7 +32,7 @@ function clearSVG(){
 document.getElementById("sectionSVG").innerHTML = "";
 }
 
-function drawRect(){
+function drawRect2(){
 clearSVG()
 let svg = document.getElementById("sectionSVG")
 svg.innerHTML = `
@@ -41,32 +41,16 @@ fill="lightblue" stroke="black"/>
 `
 }
 
+function drawRect(){
+clearSVG()
+document.getElementById("sectionView").innerHTML =
+`<img src="/svg/rect.svg">`
+}
 
 function drawCircle(){
 clearSVG()
-
 document.getElementById("sectionView").innerHTML =
 `<img src="/svg/circle.svg">`
-
-}
-
-function drawCircle2(){
-clearSVG()
-let svg = document.getElementById("sectionSVG")
-svg.innerHTML = `<img src="/svg/circle.svg">`;
-}
-
-function drawCircle3(){
-
-clearSVG()
-
-let svg = document.getElementById("sectionSVG")
-
-svg.innerHTML = `
-<circle cx="150" cy="150" r="90"
-fill="lightblue" stroke="black"/>
-`
-
 }
 
 function calculate(){
