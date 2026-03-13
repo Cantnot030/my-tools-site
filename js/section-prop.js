@@ -48,9 +48,14 @@ svg.innerHTML = `<img src="/svg/circle.svg">`;
 }
 
 function drawCircle(){
+
+clearSVG()
+
 let svg = document.getElementById("sectionSVG")
-svg.innerHTML =`
-　　<circle cx="150" cy="150" r="90" fill="lightblue" stroke="black"/>
+
+svg.innerHTML = `
+<circle cx="150" cy="150" r="90"
+fill="lightblue" stroke="black"/>
 `
 
 }
