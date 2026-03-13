@@ -32,16 +32,12 @@ document.getElementById("sectionSVG").innerHTML = "";
 }
 
 function drawRect(){
-
 clearSVG()
-
 let svg = document.getElementById("sectionSVG")
-
 svg.innerHTML = `
 <rect x="80" y="60" width="140" height="180"
 fill="lightblue" stroke="black"/>
 `
-
 }
 
 
