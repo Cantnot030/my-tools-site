@@ -41,13 +41,22 @@ fill="lightblue" stroke="black"/>
 `
 }
 
+
+function drawCircle(){
+clearSVG()
+
+document.getElementById("sectionView").innerHTML =
+`<img src="/svg/circle.svg">`
+
+}
+
 function drawCircle2(){
 clearSVG()
 let svg = document.getElementById("sectionSVG")
 svg.innerHTML = `<img src="/svg/circle.svg">`;
 }
 
-function drawCircle(){
+function drawCircle3(){
 
 clearSVG()
 
