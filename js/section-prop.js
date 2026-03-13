@@ -15,6 +15,7 @@ drawRect()
 
 if(shape==="circle"){
 document.getElementById("circleInputs").style.display = "block";
+drawCircle()
 }
 
 if(shape==="pipe"){
@@ -40,6 +41,11 @@ fill="lightblue" stroke="black"/>
 `
 }
 
+function drawCircle(){
+clearSVG()
+let svg = document.getElementById("sectionSVG")
+svg.innerHTML = `<img src="circle.svg">`
+}
 
 
 function calculate(){
