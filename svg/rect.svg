@@ -6,3 +6,6 @@
 <text x="145" y="35" class="text">b</text>
 
 <line x1="235" y1="80" x2="235" y2="240" stroke="black" stroke-width="2"/>
+<polygon points="230,90 235,80 240,90" fill="black"/>
+<polygon points="230,235 235,240 240,235" fill="black"/>
+<text x="245" y="155" class="text">h</text>
