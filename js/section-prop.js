@@ -33,13 +33,26 @@ function clearSVG(){
 document.getElementById("sectionSVG").innerHTML = "";
 }
 
-function drawRect(){
+function drawRect2(){
 clearSVG()
 let svg = document.getElementById("sectionSVG")
 svg.innerHTML = `
 <rect x="80" y="60" width="140" height="180"
 fill="lightblue" stroke="black"/>
 `
+}
+
+function drawRect(){
+
+    fetch("/svg/rect.svg")
+    .then(response => response.text())
+    .then(svg => {
+
+        let container = document.getElementById("sectionSVG");
+        container.innerHTML = svg;
+
+    });
+
 }
 
 function drawCircle(){
