@@ -20,7 +20,7 @@
 
 <!-- load -->
 <line x1="520" y1="50" x2="520" y2="80" class="line"/>
-<polygon points="515,70 525,85 520,80" fill="black"/>
+<polygon points="515,70 525,70 520,80" fill="black"/>
 
 <text x="525" y="40" class="text">P</text>
 </svg>
