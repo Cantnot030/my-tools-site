@@ -17,6 +17,6 @@
 <line x1="300" y1="50" x2="300" y2="80" stroke="black" stroke-width="2"/>
 <polygon points="295,65 305,65 300,80" fill="black"/>
 
-<text x="300" y="40" class="text">P</text>
+<text x="295" y="40" class="text">P</text>
 
 </svg>
