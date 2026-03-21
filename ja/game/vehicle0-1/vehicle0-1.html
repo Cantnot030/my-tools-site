@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>のんびりドライブ</title>
+<title>擬似3Dドライブ</title>
 <style>
 body {
   margin: 0;
@@ -10,64 +10,66 @@ body {
   background: skyblue;
 }
 
-#road {
-  position: absolute;
-  width: 100%;
-  height: 200%;
-  background: repeating-linear-gradient(
-    #555,
-    #555 40px,
-    #666 40px,
-    #666 80px
-  );
-}
-
-#player {
-  position: absolute;
-  width: 50px;
-  height: 80px;
-  background: red;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+canvas {
+  display: block;
 }
 </style>
 </head>
 
 <body>
-<div id="road"></div>
-<div id="player"></div>
+<canvas id="game"></canvas>
 
 <script>
-const road = document.getElementById("road");
-const player = document.getElementById("player");
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
 
-let roadY = 0;
-let playerX = window.innerWidth / 2 - 25;
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-// スクロール
-function update() {
-  roadY += 2;
-  road.style.top = -roadY + "px";
+let speed = 2;
+let offset = 0;
+let playerX = 0;
 
-  if (roadY > window.innerHeight) {
-    roadY = 0;
+// 操作（スマホ＆PC）
+document.addEventListener("touchmove", e => {
+  playerX = (e.touches[0].clientX - canvas.width / 2) / 10;
+});
+document.addEventListener("mousemove", e => {
+  playerX = (e.clientX - canvas.width / 2) / 10;
+});
+
+// 描画
+function drawRoad() {
+  const horizon = canvas.height * 0.4;
+
+  for (let i = 0; i < 100; i++) {
+    let z = i + offset;
+    let scale = 1 / z * 200;
+
+    let y = horizon + scale * 200;
+    let roadWidth = scale * 500;
+
+    ctx.fillStyle = i % 2 === 0 ? "#555" : "#666";
+
+    ctx.fillRect(
+      canvas.width / 2 - roadWidth / 2 + playerX,
+      y,
+      roadWidth,
+      4
+    );
   }
+}
 
-  player.style.left = playerX + "px";
+// ループ
+function update() {
+  offset += speed;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  drawRoad();
 
   requestAnimationFrame(update);
 }
-
-// 操作（スワイプ対応）
-document.addEventListener("touchmove", (e) => {
-  playerX = e.touches[0].clientX - 25;
-});
-
-// PC用
-document.addEventListener("mousemove", (e) => {
-  playerX = e.clientX - 25;
-});
 
 update();
 </script>
