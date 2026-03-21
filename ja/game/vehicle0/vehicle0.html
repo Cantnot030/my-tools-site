@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>車よけゲーム</title>
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #222;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+}
+#game {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #444;
+}
+.car {
+  position: absolute;
+  width: 50px;
+  height: 80px;
+  background: red;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.enemy {
+  position: absolute;
+  width: 50px;
+  height: 80px;
+  background: yellow;
+  top: -100px;
+}
+#score {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+</style>
+</head>
+
+<body>
+<div id="game">
+  <div id="player" class="car"></div>
+  <div id="score">0</div>
+</div>
+
+<script>
+const player = document.getElementById("player");
+const game = document.getElementById("game");
+const scoreDisplay = document.getElementById("score");
+
+let playerX = window.innerWidth / 2 - 25;
+let enemies = [];
+let score = 0;
+let gameOver = false;
+
+// 操作（スマホ対応）
+document.addEventListener("touchstart", (e) => {
+  const touchX = e.touches[0].clientX;
+  if (touchX < window.innerWidth / 2) {
+    playerX -= 60;
+  } else {
+    playerX += 60;
+  }
+});
+
+// PC用
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft") playerX -= 60;
+  if (e.key === "ArrowRight") playerX += 60;
+});
+
+// 敵生成
+function spawnEnemy() {
+  const enemy = document.createElement("div");
+  enemy.classList.add("enemy");
+  enemy.style.left = Math.random() * (window.innerWidth - 50) + "px";
+  game.appendChild(enemy);
+  enemies.push(enemy);
+}
+
+// 当たり判定
+function isCollision(a, b) {
+  const r1 = a.getBoundingClientRect();
+  const r2 = b.getBoundingClientRect();
+  return !(
+    r1.top > r2.bottom ||
+    r1.bottom < r2.top ||
+    r1.right < r2.left ||
+    r1.left > r2.right
+  );
+}
+
+// ゲームループ
+function update() {
+  if (gameOver) return;
+
+  player.style.left = playerX + "px";
+
+  enemies.forEach((enemy, index) => {
+    let y = enemy.offsetTop;
+    enemy.style.top = y + 5 + "px";
+
+    if (isCollision(player, enemy)) {
+      alert("ゲームオーバー！スコア：" + score);
+      gameOver = true;
+      location.reload();
+    }
+
+    if (y > window.innerHeight) {
+      enemy.remove();
+      enemies.splice(index, 1);
+      score++;
+      scoreDisplay.textContent = score;
+    }
+  });
+
+  requestAnimationFrame(update);
+}
+
+// スタート
+setInterval(spawnEnemy, 1000);
+update();
+</script>
+</body>
+</html>
